@@ -1,5 +1,7 @@
 # Darkmoon Security Posture — Grafana integration
 
+> **🔒 PRO-ONLY — requires the Darkmoon Pro REST API (`/api/v1`).**
+
 > **📦 Marketplace status:** Dashboards + self-host app plugin available here now. grafana.com dashboards library submission **pending publication**.
 
 Visualize your [Darkmoon](https://dark-moon.org) autonomous-pentest results in
@@ -9,7 +11,7 @@ targets, a full vulnerabilities table, MITRE ATT&CK, technologies, remediation
 pull-requests and derived **retest verdicts** — with a full
 overview → campaign → finding → evidence-metadata → remediation drill-down.
 
-Two ways to run it, both **free**:
+Two ways to run it:
 
 1. **Dashboard + Infinity datasource** (no build, no install) — import one JSON,
    point the [Infinity datasource](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/)
@@ -160,7 +162,7 @@ per-finding open/close timestamps, so it cannot be computed honestly.
 |---|---|
 | Grafana | **≥ 10.4** (tested 10.4.7, 13.2, 13.3 Cloud) |
 | Infinity datasource | `yesoreyeram-infinity-datasource` (free, Catalog-signed) |
-| Darkmoon | Pro REST API (`/api/v1`), contract version `1`. Degrades gracefully against OSS-reachable data. |
+| Darkmoon | Pro REST API (`/api/v1`), contract version `1`. |
 | App plugin backend | Go (linux/amd64 shipped; build others with `mage`) |
 
 
