@@ -1,0 +1,50 @@
+name: Deploy dashboards
+
+# Idempotently provisions the Darkmoon Infinity datasource + dashboards into the
+# Grafana instance defined by the GRAFANA_URL / GRAFANA_SA_TOKEN repo secrets.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dashboards/**'
+      - 'fixtures/**'
+      - 'scripts/deploy.py'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+    inputs:
+      darkmoon_api_base:
+        description: 'Darkmoon API base URL the dashboards should query (default: bundled Demo Shop fixtures)'
+        required: false
+        default: ''
+      deploy_prod:
+        description: 'Also deploy the production dashboard (1/0)'
+        required: false
+        default: '0'
+
+concurrency:
+  group: deploy-grafana
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Regenerate fixtures & dashboards (deterministic)
+        run: |
+          python3 scripts/gen_fixtures.py
+          python3 scripts/gen_dashboards.py
+
+      - name: Provision datasource + dashboards into Grafana
+        env:
+          GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
+          GRAFANA_SA_TOKEN: ${{ secrets.GRAFANA_SA_TOKEN }}
+          DARKMOON_API_BASE: ${{ github.event.inputs.darkmoon_api_base }}
+          DEPLOY_DEMO: '1'
+          DEPLOY_PROD: ${{ github.event.inputs.deploy_prod || '0' }}
+        run: python3 scripts/deploy.py
