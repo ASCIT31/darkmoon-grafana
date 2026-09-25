@@ -1,5 +1,7 @@
 # Darkmoon Security Posture — Grafana integration
 
+> **📦 Marketplace status:** Dashboards + self-host app plugin available here now. grafana.com dashboards library submission **pending publication**.
+
 Visualize your [Darkmoon](https://dark-moon.org) autonomous-pentest results in
 Grafana: a **security-posture dashboard** that mirrors the Darkmoon web app —
 overview KPIs, findings over time, severity/status distributions, campaigns,
