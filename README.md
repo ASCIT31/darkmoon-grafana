@@ -194,3 +194,18 @@ per-finding open/close timestamps, so it cannot be computed honestly.
 ## License
 
 MIT © 2026 ASC-IT (SARL) / Darkmoon. See [LICENSE](./LICENSE).
+
+## 🎥 Video tutorial
+
+[![Watch the Darkmoon + Grafana tutorial on YouTube](https://img.youtube.com/vi/L7K-y0HPudk/maxresdefault.jpg)](https://youtu.be/L7K-y0HPudk)
+
+▶ **[Watch the full Darkmoon + Grafana tutorial on YouTube](https://youtu.be/L7K-y0HPudk)** — real setup, end to end.
+
+## Darkmoon ecosystem
+
+Darkmoon is an open-source, AI-powered penetration testing platform. It runs a full autonomous assessment and this integration brings the results into your Grafana workflow.
+
+- ⭐ **Flagship (star it):** https://github.com/ASCIT31/Dark-Moon
+- 📚 **Docs:** https://docs.dark-moon.org
+- 🌐 **Website:** https://dark-moon.org
+- 🔗 **Related integrations:** [Splunk](https://github.com/ASCIT31/darkmoon-splunk) 
